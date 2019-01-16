@@ -150,6 +150,7 @@ body {
 
 @fixed-width: 600px;
 @fixed-height: 1100px;
+@fixed-height-mob: 800px;
 
 @light-grey: #f9fafc;
 @dark-grey: rgb(90, 90, 90);
@@ -185,8 +186,8 @@ html {
   .flex-column();
 
   .header {
-	position: fixed;
-	z-index: 10;
+    position: fixed;
+    z-index: 10;
     background: #202124;
     box-shadow: @dark-shadow;
     top: 0;
@@ -205,9 +206,9 @@ html {
       .flex(center, center);
       font-size: @font-medium;
       text-decoration: none;
-	  color: #ddd;
-	  border-bottom: 4px transparent solid;
-	  transition: all 500ms;
+      color: #ddd;
+      border-bottom: 4px transparent solid;
+      transition: all 500ms;
       &.active {
         color: #fff;
         border-bottom: 4px white solid;
@@ -227,14 +228,20 @@ html {
     box-shadow: @shadow;
     overflow: hidden;
 	position: relative;
-	
-	&.contact {
-		max-height: 850px;
+	transition: height 500ms;
+
+	@media (max-width: 500px) {
+		height: @fixed-height-mob;
 	}
 
-	div, form {
-		width: 100%;
-	}
+    &.contact {
+      max-height: 850px;
+    }
+
+    div,
+    form {
+      width: 100%;
+    }
 
     .card-media {
       width: 100%;
@@ -242,7 +249,11 @@ html {
       background: @dark-grey;
       background: url("https://ksassets.timeincuk.net/wp/uploads/sites/55/2017/08/GettyImages-93324240-920x585.jpg");
       background-size: cover;
-      background-position: center;
+	  background-position: center;
+	  transition: height 500ms;
+	  @media (max-width: 500px) {
+        height: 25%;
+      }
     }
 
     .card-content {
@@ -250,7 +261,12 @@ html {
       padding: 5%;
       height: 55%;
       .flex(space-around, flex-start);
-      .flex-column();
+	  .flex-column();
+	  transition: height 500ms;
+
+      @media (max-width: 500px) {
+        height: 75%;
+      }
 
       .card-header {
         height: 60px;
@@ -265,14 +281,18 @@ html {
           height: 75px;
           .flex(space-around, center);
         }
-	  }
-	  
-	  .card-text-section {
-		margin-bottom: 1rem;
-	  }
+      }
+
+      .card-text-section {
+        margin-bottom: 1rem;
+      }
 
       .card-actions {
-        height: 40px;
+		height: 40px;
+		&.contact {
+			.flex(center, center);
+		}
+		
       }
 
       h1 {
@@ -286,8 +306,8 @@ html {
 
       h3 {
         font-size: @font-medium;
-		color: @green;
-		margin: 1rem 0;
+        color: @green;
+        margin: 1rem 0;
       }
 
       p,
@@ -301,7 +321,7 @@ html {
         list-style-position: inside;
       }
 
-      button {
+      .button {
         font-size: @font-small;
         background: @green;
         width: 150px;
@@ -317,41 +337,46 @@ html {
         }
         &:active {
           box-shadow: none;
-        } // -- active
-	  } // -- button
-	  
-	  //contact-page-specific
-	  .card-contact-form {
-		  padding: 3% 0;
-		  width: 100%;
-		  height: 300px;
-		  text-align: left;
-		  .flex(space-around, center);
-		  .flex-column();
-		  label {
-			  width: 60%;
-			  font-size: @font-medium;
-			  color: @green;
-		  }
-		  input {
-			  border: 1px @dark-grey solid;
-			  border-radius: 3px;
-			  height: 45px;
-			  width: 60%;
-			  padding: 0 3%;
-			  transition: all 500ms;
-			  &:active, &:focus {
-				  outline: none;
-				  border: 1px @green solid;
-				  background: @light-grey;
-			  }
-		  }
+		} // -- active
+      } // -- button
 
-		  @media (max-width: 500px) {
-			  input { width: 100%; }
-			  label { width: 100%; }
-		  }
-	  }
+      //contact-page-specific
+      .card-contact-form {
+        padding: 3% 0;
+        width: 100%;
+        height: 300px;
+        text-align: left;
+        .flex(space-around, center);
+        .flex-column();
+        label {
+          width: 60%;
+          font-size: @font-medium;
+          color: @green;
+        }
+        input {
+          border: 1px @dark-grey solid;
+          border-radius: 3px;
+          height: 45px;
+          width: 60%;
+          padding: 0 3%;
+          transition: all 500ms;
+          &:active,
+          &:focus {
+            outline: none;
+            border: 1px @green solid;
+            background: @light-grey;
+          }
+        }
+
+        @media (max-width: 500px) {
+          input {
+            width: 100%;
+          }
+          label {
+            width: 100%;
+          }
+        }
+      }
     } // card-content
   } // // -- card
 } // -- container
