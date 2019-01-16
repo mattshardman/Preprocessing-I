@@ -62,3 +62,25 @@ html, body {
 @light-grey: #eaeaea;
 @green: #26c6da;
 
+.flex(@justify, @align) {
+	display: flex;
+	justify-content: @justify;
+	align-items: @align;
+}
+
+.flex-column() {
+	flex-direction: column;
+}
+
+.container {
+	height: 100vh;
+	.flex(center, center);
+}
+
+section {
+	margin: 0 auto;
+	height: 700px;
+	width: 700px;
+	border: 1px solid @green;
+	border-radius: 5px;
+}
