@@ -59,8 +59,9 @@ html, body {
 }
 
 /* my code */
-@light-grey: #eaeaea;
-@green: #26c6da;
+@light-grey: #f9fafc;
+@green: rgba(38, 198, 218, .5);
+@shadow: 0 3px 35px rgba(0,0,0,.1);
 
 .flex(@justify, @align) {
 	display: flex;
@@ -74,13 +75,16 @@ html, body {
 
 .container {
 	height: 100vh;
+	background: fade(@light-grey, 60%);
 	.flex(center, center);
+	.card {
+		background: white;
+		margin: 0 auto;
+		height: 700px;
+		width: 700px;
+		border: 1px solid @green;
+		border-radius: 10px;
+		box-shadow: @shadow;
+	}
 }
 
-section {
-	margin: 0 auto;
-	height: 700px;
-	width: 700px;
-	border: 1px solid @green;
-	border-radius: 5px;
-}
